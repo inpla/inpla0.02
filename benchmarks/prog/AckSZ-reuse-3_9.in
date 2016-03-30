@@ -1,0 +1,5 @@
+use "lib/AckSZ-reuse.in";
+
+A1(S(S(S(S(S(S(S(S(S(Z))))))))), r)~S(S(S(Z)));
+prnat r;
+exit;

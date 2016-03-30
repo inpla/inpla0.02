@@ -1,0 +1,11 @@
+// Quick sort
+QS(r) >< [] => r~[];
+QS(r) >< [int x|xs] => Part(x, QS(w), QS(App([x|w], r)))~xs;
+
+App(a,b) >< [] => a~b;
+App(a,b) >< [x|xs] => b~[x|w], xs~App(a,w);
+
+Part(int x, a, b) >< [] => a~[], b~[];
+Part(int x, a,b) >< [int y|ys]
+| y<x => ys~Part(x, a, w), b~[y|w]
+| _   => ys~Part(x, w, b), a~[y|w];

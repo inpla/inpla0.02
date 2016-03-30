@@ -1,0 +1,6 @@
+use "lib/AckSZ-Hybrid.in";
+
+//Ack 3 9
+Ack((9),ToNat(0,r))~(3);
+r;
+free r;

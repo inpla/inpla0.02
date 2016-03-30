@@ -1,0 +1,22 @@
+// Merge sort
+MS(r) >< [] => r~[];
+MS(r) >< [x|xs] => MS_tail(x, r)~xs;
+
+MS_tail(int n, r) >< [] => r~[n];
+MS_tail(int h, r) >< [h1|t1] => 
+	Split(l1,r1) ~ [h |[h1|t1]],
+	MS(a)~l1, MS(b)~r1, Merge(r,b)~a;
+
+
+Merge(r, snd) >< [] => r~snd;
+Merge(r, snd) >< [n | ns] => Merge2(r, [n|ns])~snd;
+Merge2(r, fst) >< [] => r~fst;
+Merge2(r, fst) >< [h2|t2] => Merge_h2(h2, r,t2) ~fst;
+
+Merge_h2(int h2, r,t2) >< [int h | t]
+| h <= h2 => r~[h | r1], Merge(r1, [h2|t2])~t
+| _        => r~[h2| r1], Merge(r1, t2)~ [h|t];
+
+Split(r,l) >< [] => r~[], l~[];
+Split(r,l) >< [h | t] =>
+	Split(r1,l1)~t, r~[h | l1], l~r1;

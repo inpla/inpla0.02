@@ -1,0 +1,5 @@
+Licence
+
+Copyright (c) 2016 Shinya SATO
+ Released under the MIT license
+http://opensource.org/licenses/mit-license.php

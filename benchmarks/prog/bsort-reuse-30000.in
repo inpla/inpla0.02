@@ -1,0 +1,11 @@
+// Bubble sort
+use "lib/list_common.in";
+use "lib/bsort-reuse.in";
+
+const LIST_ELEM=30000;
+
+
+MkRandList(r)~(LIST_ELEM),
+BS(r1)~r;
+//r1;
+free r1;

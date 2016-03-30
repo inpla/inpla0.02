@@ -1,0 +1,22 @@
+Fib(r)><Z => r~S(Z);
+Fib(r)><S(x) => FibS(r)~x;
+FibS(r)><Z => r~S(Z);
+FibS(r)><S(x) => x~Dup(x1,x2), Fib(r1)~S(x1), Fib(r2)~x2, Add(r2,r)~r1;
+
+
+// ------ DUP ------
+Dup(x1,x2)><Z => x1~Z, x2~Z;
+Dup(x1,x2)><S(x) => x~Dup(w1,w2), x1~S(w1), x2~S(w2);
+
+
+//------ ADD ------
+//Add_Seq
+Add(y,r)><Z => y~r;
+Add(y,r)><S(x) => Add(S(y),r)~x;
+
+
+// Fib 30
+Fib(r)~S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(Z))))))))))))))))))))))))))))));
+prnat r;
+free r;
+

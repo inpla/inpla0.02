@@ -1,0 +1,20 @@
+// Insertion sort
+use "sample/list_common.in";
+use "sample/isort.in";
+
+const LIST_ELEM=100;
+
+MkList(r)~(LIST_ELEM);
+IS(r1)~r;
+r1;
+free r1;
+
+MkList(r)~(LIST_ELEM), Reverse(r1)~r;
+IS(r2)~r1;
+r2;
+free r2;
+
+MkRandList(r)~(LIST_ELEM);
+IS(r1)~r;
+r1;
+free r1;

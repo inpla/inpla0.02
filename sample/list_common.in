@@ -1,0 +1,26 @@
+// List common
+MkList(r) >< (int n)
+| n>0 => r~[n|r1], MkList(r1)~(n1) where n1=n-1
+| _ => r~[];
+
+
+MkRandList(r) >< (int n)
+| n>0 => r~[rd|r1], MkRandList(r1)~(n1) 
+  where n1=n-1 rd=rand(10000)
+| _ => r~[];
+
+// Reverse
+Rev(r, b1, b2) >< [x|xs] => Rev(r, [x|b1] , b2)~xs;
+Rev(r, b1, b2) >< []  => r~b1, b2~[];
+Reverse(r) >< [] => r~[];
+Reverse(r) >< [x|xs] => Rev(r, a,a) ~ [x|xs];
+
+// Check
+Check(r, int x) >< [int y| ys]
+| x <= y => Check(r, y)~ys
+| _ => r~False, Eps~ys;
+
+Check(r, int x) >< [] => r~True;
+
+Eps >< [int x | xs] => Eps~xs;
+Eps >< [] =>;

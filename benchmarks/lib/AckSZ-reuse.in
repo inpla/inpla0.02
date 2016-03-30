@@ -1,0 +1,7 @@
+A1(y,r)>< Z => r~(*L)S(y);
+A1(y,r)>< S(x) => (*L)A2((*R)S(x),r)~y;
+A2(x,r)>< Z => (*L)Pred(A1(S((*R)Z),r))~x;
+A2(x,r)>< S(y) => x~Dup(Pred((*L)A1(w2,r)),(*R)A1(y,w2));
+Dup(a1,a2)>< Z => a1~(*L)Z, a2~(*R)Z;
+Dup(a1,a2)>< S(x) => a1~(*R)S(w1), a2~S(w2), x~(*L)Dup(w1,w2);
+Pred(a1)>< S(x) => a1~x;

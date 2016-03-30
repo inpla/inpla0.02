@@ -1,0 +1,460 @@
+====================================================================
+
+                         Let's start Inpla!
+
+                                     By Shinya Sato on 30 March 2016
+====================================================================
+1. Build
+====================================================================
+
+* Requirement
+-------------------------------------------------------------------
+- To build Inpla, the following are required:
+-- gcc (>= 4.0), flex, bison
+
+
+
+* Build
+-------------------------------------------------------------------
+- Use 'make' command to build Inpla as follows 
+(the symbol '>' means a shell prompt):
+> make
+
+
+- Use 'make' with 'thread' option to obtain the multi-thread version:
+> make thread
+
+
+
+====================================================================
+2. Execution
+====================================================================
+
+* Batch operation mode
+-------------------------------------------------------------------
+- Inpla starts in the batch operation mode that manages a file when 
+an option '-f' is specified. For instance, the following command 
+makes Inpla read a file 'sample/AckSZ-3_5.in' and execute it:
+> ./inpla -f sample/AckSZ-3_5.in
+
+- An option '-t' can specify the number of threads in the thread 
+pool, in the case of the multi-threaded version. For instance,
+using '-t 4', Inpla uses 4 threads:
+> ./inpla -f sample/AckSZ-3_5.in -t 4
+
+
+- There are other sample files in the 'sample' directory.
+-- Ackerman function A 3 5 on unary natural numbers.
+> ./inpla -f sample/AckSZ-3_5.in
+
+
+-- Ackerman function A 3 5 on integer numbers.
+> ./inpla -f sample/ack_3_5.in
+
+
+-- Fibonacci number of 9 on unary natural numbers.
+> ./inpla -f sample/FibSZ_9.in
+
+
+-- Fibonacci number of 9 on integer numbers.
+> ./inpla -f sample/fib_9.in
+
+
+-- An execution of lambda terms '245II' in YALE encoding, where
+2 4 5 mean church numbers of lambda terms respectively and
+I is a lambda term \lambda x.x.
+> ./inpla -f sample/245II.in
+
+
+-- Bubble sort for a list that has 100 integer numbers as elements, 
+at the best case, the worst case and the case of elements selected 
+at random. 
+> ./inpla -f sample/bsort100.in
+
+
+-- Insertion sort.
+> ./inpla -f sample/isort100.in
+
+
+-- Quick sort.
+> ./inpla -f sample/qsort100.in
+
+
+-- Merge sort.
+> ./inpla -f sample/msort100.in
+
+
+
+
+* Interactive mode
+-------------------------------------------------------------------
+- Inpla starts in the interactive mode as follows when it is invoked 
+without the '-f' option:
+
+> ./inpla
+------------------------------------------------------------
+      Inpla: Interaction nets as a programming language
+                     version  0.02 [built: 16 Feb. 2016]
+------------------------------------------------------------
+$ 
+
+
+- The symbol '$' is a prompt of this system.
+
+
+- The multi-thread version has an option '-t' in order to specify 
+the number of threads in a thread pool. For instance, by using an 
+option '-t 4' Inpla starts with four threads in the pool:
+> ./inpla -t 4
+
+
+- To quit this system, use 'exit' command:
+$ exit;
+
+
+
+* Options
+-------------------------------------------------------------------
+- Other options can be shown with '-h' option:
+> ./inpla -h
+Usage: inpla [options]
+
+Options:
+ -f <filename>    set input file name          (Defalut is    STDIN)
+ -c <number>      set the size of term cells   (Defalut is   100000)
+ -x <number>      set the size of the AP stack (Default is    10000)
+ -t <number>      set the number of threads    (Default is        1)
+ -h               print this help message
+
+
+(The option '-t' is available when Inpla is compiled as the 
+multi-threaded version by using the command 'make thread'.)
+
+
+
+====================================================================
+3. For benchmarks
+====================================================================
+
+There are some scripts in the directory 'benchmarks' to obtain 
+benchmark tables, which have the execution times by using non-thread, 
+1-thread, 2-threads, ... and 8-threads.
+
+- First, change the current directory to the 'benchmarks':
+> cd benchmarks
+
+
+* Example
+-------------------------------------------------------------------
+The following are commands to obtain the benchmark tables:
+
+- On unary natural numbers:
+-- Ackermann function:
+> ./sptestInpla.sh prog/AckSZ-3_8.in '-x 100000'
+> ./sptestInpla.sh prog/AckSZ-3_9.in '-x 100000'
+> ./sptestInpla.sh prog/AckSZ-3_10.in '-x 100000'
+> ./sptestInpla.sh prog/AckSZ-3_11.in '-x 100000'
+
+-- Fibonacci numbers:
+> ./sptestInpla.sh prog/FibSZ_29.in '-c 100000000'
+> ./sptestInpla.sh prog/FibSZ_30.in '-c 100000000'
+> ./sptestInpla.sh prog/FibSZ_31.in '-c 100000000'
+> ./sptestInpla.sh prog/FibSZ_32.in '-c 100000000'
+
+- Lambda calculus in Yale encoding:
+> ./sptestInpla.sh prog/267II.in '-c 80000000'
+> ./sptestInpla.sh prog/276II.in '-c 80000000'
+> ./sptestInpla.sh prog/277II.in '-c 80000000'
+
+
+- On integer numbers
+-- Ackermann function:
+> ./sptestInpla.sh prog/ack_3_8.in
+> ./sptestInpla.sh prog/ack_3_9.in
+> ./sptestInpla.sh prog/ack_3_10.in
+> ./sptestInpla.sh prog/ack_3_11.in
+
+-- Fibonacci numbers:
+> ./sptestInpla.sh prog/fib_36.in
+> ./sptestInpla.sh prog/fib_37.in
+> ./sptestInpla.sh prog/fib_38.in
+> ./sptestInpla.sh prog/fib_39.in
+
+
+- Sort algorithms
+-- Bubble sort for lists of randomly selected n elements:
+> ./sptestInpla.sh prog/bsort20000.in
+> ./sptestInpla.sh prog/bsort30000.in
+
+-- Quick sort for lists of randomly selected n elements:
+> ./sptestInpla.sh prog/qsort400000.in '-c 2000000'
+> ./sptestInpla.sh prog/qsort500000.in '-c 2000000'
+
+
+
+====================================================================
+4. Syntax
+====================================================================
+
+* Names
+-------------------------------------------------------------------
+- A string started with a small letter is regarded as a name in 
+interaction nets. For instance, 'x' and 'y' are identified as names. 
+To show the connected elements to a name x, type just 'x':
+$ x;
+<NON-DEFINED>
+
+Because the given name 'x' has not defined, '<NON-DEFINED>' returns.
+
+
+
+* Connections
+-------------------------------------------------------------------
+- An equation in the lightweight calculus of interaction nets is 
+written by using '~' operator. Thus, an equations x=y is written 
+as x~y. 
+
+
+
+* Operation of equations
+-------------------------------------------------------------------
+- The syntax of a sequence of equations is defined as follows:
+ <equation> ',' <equation> ',' ... ',' <equation>
+
+- The following example shows an operation of two equations x~y 
+and y~z:
+$ x~y, y~z;
+
+
+
+After this execution, the y is disposed, a new equation x~z is made, 
+and x is connected from z. This is confirmed as follows:
+$ y;
+<NON-DEFINED>
+$ z;
+x
+$ x;
+<EMPTY>
+
+The <EMPTY> means that there is nothing to be connected to the given 
+name. In this example, the x is defined but not connected to anything.
+
+To dispose z, use 'free' command:
+$ free z;
+
+
+Then, z and x become non-defined:
+$ x;
+<NON-DEFINED>
+$ z;
+<NON-DEFINED>
+
+
+
+* Agents
+-------------------------------------------------------------------
+- A string started with a capital letter is identified as an agent 
+in interaction nets. For instance, 'Z' is identified as an agent. 
+The following is an example of operation of x~Z:
+$ x~Z;
+$ x;
+Z;
+$ free x;
+
+
+- Agents that have arguments are also written using brackets '(' and 
+')'. For instance, 'S(Z)' is identified as an agent:
+$ x~S(Z);
+$ x;
+S(Z);
+$ free x;
+
+
+
+* Interaction rules
+-------------------------------------------------------------------
+- Interaction rules are defined as the following syntax:
+  <agent> '><' <agent> '=>' <equations> ';'
+where 
+ <agent> means an agent whose all arguments are names,
+ <equations> means a sequence of equations.
+
+
+For instance, the following shows two rules of addition on unary 
+natural numbers:
+$ Add(x,r)><S(y) => Add(S(x),r)~y;
+$ Add(x,r)><Z => x~r;
+
+
+The result of addition of S(Z) and S(S(Z)) is obtained using the 
+above rules as follows:
+$ Add(S(Z), result)~S(S(Z));
+$ result;
+S(S(S(Z)))
+
+
+To show the result as a natural number, use 'prnat' command:
+$ prnat result;
+3
+$ free result;
+
+
+
+* Integer numbers
+-------------------------------------------------------------------
+- As an extension of Inpla, agents can have integer numbers as 
+arguments. These are called attributes. For instance, 'A(100)' is 
+interpreted as an agent 'A' that holds an attribute of the integer 
+number 100. 
+
+The following shows that the agent A(100) is managed correctly in 
+this system:
+$ x~A(100);
+$ x;
+A(100);
+$ free x;
+
+
+
+* Built-in agents
+-------------------------------------------------------------------
+- Inpla has built-in agents:
+-- 'Tuple0', 'Tuple1(x)', 'Tuple2(x,y)',... 
+  are written as '()', '(x)', '(x,y)' and so on.
+-- 'Nil', 'Cons(x,xs)' are written as '[]' and '[x|xs]'. 
+  A nested Cons that terminated at Nil is written as a list notation 
+  using brackets '[' and ']'. For instance, [x1 | [x2 | [ x3 | NIL]]] 
+  is written as [x1,x2,x3].
+
+The following is an example of built-in agents:
+
+$ x~(100);
+$ x;
+(100)
+$ free x;
+$ x~[1,2,3];
+$ x;
+[1,2,3]
+$ free x;
+
+- Attritubes are not agents, and thus the following becomes an error:
+$ x~100;
+ERROR: The integer 100 is used as an agent.
+
+
+
+* Arithmetic expressions on attributes
+-------------------------------------------------------------------
+- Attiributes can be given as the results of arithmetic operation 
+using 'where' statement after equations:
+  <equations> 'where' <let-clause>
+where 
+ <let-clause> is defined as <name> '=' <arithmetic-expression>.
+
+- Besides of <let-clause>, a sequence with the delimitor ' ' of 
+<let-clause> is also used.
+
+The following is an example of an expression using 'where':
+$ x~(a) where b=3+5 a=b+10;
+$ x;
+(18);
+$ free x;
+
+
+
+* Interaction rules with expressions on attributes
+-------------------------------------------------------------------
+- Attiributes can be managed by using a modifier 'int'. The following 
+is an example of an increment operation on an attribute:
+$ Inc(r) >< (int a) => r~(b) where b=a+1;
+$ Inc(result)~(10);
+$ result;
+(11)
+$ free result;
+
+
+- The following is an examle of addition operation on attributes:
+// Addition operation on attributes --------------------------
+Add(n2,r) >< (int i)
+=> Add2(i, r) ~ n2;
+
+Add2(int i, r) >< (int j)
+=> r~(a) where a=i+j;
+// -----------------------------------------------------------
+
+$ Add((10),r)~(3);
+$ r;
+(13)
+$ free r;
+
+
+
+* Interaction rules with conditions on attributes
+-------------------------------------------------------------------
+- Conditional rewritings on attributes in interaction rules can be 
+performed. The following is a general form:
+  <agent> '><' <agent> 
+  '|' <condition> '=>' <equations>
+  '|' <condition> '=>' <equations> 'where' <let-clauses>
+  ...
+  '|' '_'  '=>' <equations> ';'
+
+
+The following is an example of rules to obtain a list that contains 
+only even numbers:
+
+// EvenList ------------------------------------------
+EvenList(r) >< [] => r~[];
+EvenList(r) >< [int x| xs]
+| x%2==0 => r~[x | r1], EvenList(r1)~xs
+| _      => EvenList(r)~xs;
+// ---------------------------------------------------
+
+$ EvenList(r)~[1,3,7,5,3,4,9,10];
+$ r;
+[4,10]
+$ free r;
+
+
+As another example Fibonacci number is taken:
+
+// Fibonacci number ------------------------------------------
+Fib(r) >< (int a)
+| a == 0 => r~(0)
+| a == 1 => r~(1)
+| _ => Fib(n1)~(b),Fib(n2)~(c), Add(n2,r)~n1 
+  where b=a-1 c=a-2; 
+
+Add(n2,r) >< (int i)
+=> Add2(i, r) ~ n2;
+
+Add2(int i, r) >< (int j)
+=> r~(a) where a=i+j;
+// -----------------------------------------------------------
+
+$ Fib(r)~(39);
+$ r;
+(63245986)
+$ free r;
+
+
+
+====================================================================
+5. Commands
+====================================================================
+
+- Inpla has the following commands:
+free <name>;     The <name> and agents connected from the <name> are 
+                 disposed.
+<name>;          Put a connected agents from the <name>.
+prnat <name>;    Put a connected agents from the <name> as a natural 
+                 number.
+use "filename";  Read the filename from the current directory.
+interface;       Put all names that are not non-defined.
+exit;            Quit the system.
+
+- Inpla has the following macro:
+const <agent>=<int literal>  The <agent> is replaced with the 
+                             <int literal>.
+
+====================================================================

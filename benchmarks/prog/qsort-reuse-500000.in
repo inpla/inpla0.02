@@ -1,0 +1,12 @@
+// Quick sort
+// ./inpla -f qsort300000.in  -c 4000000
+use "lib/list_common.in";
+use "lib/qsort-reuse.in";
+
+const LIST_ELEM=500000;
+
+
+MkRandList(r)~(LIST_ELEM),
+QS(r1)~r;
+//r1;
+free r1;

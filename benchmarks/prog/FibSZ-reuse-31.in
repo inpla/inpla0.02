@@ -1,0 +1,7 @@
+use "lib/FibSZ-reuse.in";
+
+// Fib 31
+Fib(r)~S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(S(Z)))))))))))))))))))))))))))))));
+prnat r;
+free r;
+

@@ -1,0 +1,6 @@
+use "lib/fib-reuse.in";
+
+Fib(r)~(39);
+r;
+free r;
+

@@ -1,0 +1,16 @@
+Fib(r)><Z => r~(*L)S((*R)Z);
+Fib(r)><S(x) => (*L)FibS(r)~x;
+FibS(r)><Z => r~(*L)S((*R)Z);
+FibS(r)><S(x) => x~Dup(x1,x2), (*L)Fib(r1)~(*R)S(x1), Fib(r2)~x2, Add(r2,r)~r1;
+
+
+// ------ DUP ------
+Dup(x1,x2)><Z => x1~(*L)Z, x2~(*R)Z;
+//Dup(x1,x2)><S(x) => x1~(*R)S(w1), x2~S(w2), x~(*L)Dup(w1,w2);
+Dup(x1,x2)><S(x) => x~(*L)Dup(w1,w2), x1~(*R)S(w1), x2~S(w2);
+
+
+//------ ADD ------
+//Add_Seq
+Add(y,r)><Z => y~r;
+Add(y,r)><S(x) => (*L)Add((*R)S(y),r)~x;

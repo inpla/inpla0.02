@@ -1,0 +1,13 @@
+// Fibonacci number
+Fib(r) >< (int a)
+| a == 0 => r~(*R)(1)
+| a == 1 => r~(*R)(1)
+| _ => Add(n2,r)~n1, (*L)Fib(n1)~(*R)(b),Fib(n2)~(c)
+  where b=a-1 c=a-2; 
+
+Add(n2,r) >< (int i)
+=> (*L)Add2(i, r) ~ n2;
+
+Add2(int i, r) >< (int j)
+=> r~(*R)(a) where a=i+j;
+

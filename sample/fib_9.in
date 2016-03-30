@@ -1,0 +1,21 @@
+// Fibonacci number
+
+// Rules
+Fib(r) >< (int a)
+| a == 0 => r~(1)
+| a == 1 => r~(1)
+| _ => Fib(n1)~(b),Fib(n2)~(c), Add(n2,r)~n1 
+  where b=a-1 c=a-2; 
+
+Add(n2,r) >< (int i)
+=> Add2(i, r) ~ n2;
+
+Add2(int i, r) >< (int j)
+=> r~(a) where a=i+j;
+
+
+// Execution: Fib 9
+Fib(r)~(9);
+r;
+free r;
+

@@ -1,0 +1,6 @@
+use "lib/AckSZ-Hybrid-reuse.in";
+
+//Ack 3 8
+Ack((8),ToNat(0,r))~(3);
+r;
+free r;

@@ -1,0 +1,10 @@
+// Bubble sort
+BS(r) >< [] => r~(*R)[];
+BS(r) >< [x | xs] => (*R)B(x, (*L)BS(r))~xs;
+BS(r) >< M(w) => r~w;
+
+B(int x,r) >< [] => r~(*L)M((*R)[x]);
+B(int x,r) >< M(w) => r~(*R)M((*L)[x | w]);
+B(int x,r) >< [int y | ys]
+|x<y => r~(*R)[x|w], (*L)B(y,w)~ys
+| _  => r~(*R)[y|w], (*L)B(x,w)~ys;

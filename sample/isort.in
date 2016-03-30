@@ -1,0 +1,8 @@
+// Insertion sort
+IS(r) >< [] => r~[];
+IS(r) >< [x|xs] => I(x,r)~w, IS(w)~xs;
+
+I(int x,r) >< [] => r ~ [x];
+I(int x,r) >< [int y|ys]
+| x<y => r~[x|[y|ys]]
+| _   => r~[y|w], I(x, w)~ys;

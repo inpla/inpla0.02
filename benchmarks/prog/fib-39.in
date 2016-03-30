@@ -1,0 +1,6 @@
+use "lib/fib.in";
+
+Fib(r)~(39);
+r;
+free r;
+

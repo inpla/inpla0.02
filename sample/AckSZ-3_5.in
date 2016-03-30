@@ -1,0 +1,17 @@
+// Ackermann function on unary natural numbers
+
+// Rules
+A1(y,r)>< Z => r~S(y);
+A1(y,r)>< S(x) => A2(S(x),r)~y;
+A2(x,r)>< Z => Pred(A1(S(Z),r))~x;
+A2(x,r)>< S(y) => x~Dup(Pred(A1(w2,r)),A1(y,w2));
+Dup(a1,a2)>< Z => a1~Z, a2~Z;
+Dup(a1,a2)>< S(x) => a1~S(w1), a2~S(w2), x~Dup(w1,w2);
+Pred(a1)>< S(x) => a1~x;
+
+// Execution
+// A 3 5
+A1(S(S(S(S(S(Z))))), r)~S(S(S(Z)));
+prnat r;
+//r;
+exit;

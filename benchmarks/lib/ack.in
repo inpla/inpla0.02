@@ -1,0 +1,10 @@
+A(n,r) >< (int m) 
+| m==0 => Addn(1,r)~n
+| _ => A2(m, r)~n;
+
+A2(int m,r)><(int n)
+| n==0 => A((1),r)~(m1) where m1=m-1
+| _ => A(w,r)~(m1), A((n1),w)~(m) where n1=n-1 m1=m-1;
+//| _ => A((n1),w)~(m), A(w,r)~(m1)  where n1=n-1 m1=m-1;
+
+Addn(int n, r)><(int m)=> r~(i) where i=n+m;

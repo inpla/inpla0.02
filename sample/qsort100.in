@@ -1,0 +1,26 @@
+// Quick sort
+use "sample/list_common.in";
+use "sample/qsort.in";
+
+const LIST_ELEM=100;
+
+MkList(r)~(LIST_ELEM);
+QS(r1)~r;
+r1;
+free r1;
+
+MkList(r)~(LIST_ELEM), Reverse(r1)~r;
+QS(r2)~r1;
+r2;
+free r2;
+
+MkRandList(r)~(LIST_ELEM);
+QS(r1)~r;
+r1;
+free r1;
+
+/*
+QS(r)~ [2,4,1,3];
+r;
+free r;
+*/
