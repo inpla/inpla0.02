@@ -150,7 +150,16 @@ Options:
 multi-thread version by using the command ```make thread```.)
 
 
-# Syntax
+# Introduction
+
+## Terms
+Terms are defined as follows:
+  ```
+<term> ::= <name>
+         | <agentID> '(' <term> ',' ... ',' <term> ')'
+```
+
+
 
 ## Names
 - A string started with a small letter is regarded as a name in 
