@@ -395,7 +395,7 @@ $ free r;
   - ```use``` ```"```filename```";```  
   Read the filename in the current directory.
   - ```interface;```       
-  Put all names that are not non-defined.
+  Put all names that live.
   - ```exit;```            
   Quit the system.
 
