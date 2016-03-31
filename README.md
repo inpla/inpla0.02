@@ -72,14 +72,14 @@ using ```-t 4```, Inpla uses 4 threads:
 ```
 
 
-  - Evaluation of a lambda term ```245II``` in YALE encoding, where
+  - Evaluation of a lambda term ```245II``` in [YALE encoding](http://dl.acm.org/citation.cfm?id=289434), where
 ```2 4 5``` mean church numbers of lambda terms respectively and
 ```I``` is a lambda term $\lambda x.x$.
   ```
 > ./inpla -f sample/245II.in
 ```  
 
-  - Samples of linear systemT encoding.
+  - Samples of linear systemT encoding (see [our paper](http://link.springer.com/chapter/10.1007%2F978-3-319-29604-3_6) presented at FLOPS 2016).
   ```
 > ./inpla -f sample/linear-systemT.in
 ```
