@@ -156,13 +156,14 @@ multi-thread version by using the command ```make thread```.)
 Terms are defined as follows:
   ```
 <term> ::= <name>
+         | <agentID>
          | <agentID> '(' <term> ',' ... ',' <term> ')'
 ```
 - Name: a string started with a small letter is regarded as a name in 
 interaction nets. For instance, ```x``` and ```y``` are identified as names. 
 
 - Agent: a string started with a capital letter is identified as an agent 
-in interaction nets. For instance, ```A``` is identified as an agent. 
+in interaction nets. For instance, ```A``` and ```Succ(x)``` are identified as an agent. 
 
 ## Connections
 Connections between terms are expresssed by equations. In inpla, we use the symbol ```~``` instead of ```=```.
@@ -195,16 +196,6 @@ $ free y;
 $ y;
 <NON-DEFINED>
 ```  
-
-- Agents that have arguments are also written using brackets ```(``` and 
-```)```. For instance, ```S(Z)``` is identified as an agent:
-  ```
-$ x~S(Z);
-$ x;
-S(Z);
-$ free x;
-```
-
 
 ## Interaction rules
 Connections between agents are rewritten according to interaction rules:
@@ -298,6 +289,7 @@ using ```where``` statement after equations:
 <extended equations> ::= <equations> 
                        | <equations> 'where' <let-clause>* ';'
 <let-clause> ::= <name> '=' <arithmetic expression>
+```
 
 - For instance, the following is an expression using ```where```:
   ```
