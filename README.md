@@ -158,71 +158,43 @@ Terms are defined as follows:
 <term> ::= <name>
          | <agentID> '(' <term> ',' ... ',' <term> ')'
 ```
-
-
-
-## Names
-- A string started with a small letter is regarded as a name in 
+- Name: a string started with a small letter is regarded as a name in 
 interaction nets. For instance, ```x``` and ```y``` are identified as names. 
-To show the connected elements to a name x, type just ```x```:  
 
+- Agent: a string started with a capital letter is identified as an agent 
+in interaction nets. For instance, ```A``` is identified as an agent. 
+
+## Connections
+Connections between terms are expresssed by equations. In inpla, we use the symbol ```~``` instead of ```=```.
+An equation can be evaluated in Inpla. For instance, ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
+  ```
+$ x~A;
+```
+
+To show the connected elements to a name x, type just ```x```:  
   ```
 $ x;
-<NON-DEFINED>
+A
 ```  
-Because the given name ```x``` has not defined, ```<NON-DEFINED>``` returns.
 
-
-## Equations
-- An equation (i.e. a connection) is written by using ```~``` operator. Thus, an equation x=y is written 
-as ```x~y```. 
-
-
-
-### Operation of equations
-- The syntax of a sequence of equations is defined as follows:  
-  &lt;equation&gt; ```,``` &lt;equation&gt; ```,``` ... ```,``` &lt;equation&gt;
-
-- For instance, the following shows an operation of two equations ```x~y```
-and ```y~z```:
+To dispose anything connceted from the ```x```, use ```free``` command:
   ```
-$ x~y, y~z;
+$ free x;
+$ x;
+<NON-DEFINED>
 ```
-After this execution, the y is disposed, a new equation ```x~z``` is made, 
-and x is connected from z. This is confirmed as follows:
+
+Many equations can also be evaluated. For instance, ```x~A, x~y''' is evaluated as ```y~A``` (note that the ```x``` is disposed):
   ```
+$ x~A, x~y;
+$ y;
+A
+$ x;
+<NON-DEFINED>
+$ free y;
 $ y;
 <NON-DEFINED>
-$ z;
-x
-$ x;
-<EMPTY>
-```
-The <EMPTY> means that there is nothing to be connected to the given 
-name. In this example, the x is defined but not connected to anything.
-
-- To dispose z, use ```free``` command:
-  ```
-$ free z;
-```
-Then, z and x become non-defined:
-  ```
-$ x;
-<NON-DEFINED>
-$ z;
-<NON-DEFINED>
-```
-
-## Agents
-- A string started with a capital letter is identified as an agent 
-in interaction nets. For instance, ```Z``` is identified as an agent. 
-The following is an example of operation of ```x~Z```:
-  ```
-$ x~Z;
-$ x;
-Z;
-$ free x;
-```
+```  
 
 - Agents that have arguments are also written using brackets ```(``` and 
 ```)```. For instance, ```S(Z)``` is identified as an agent:
@@ -235,23 +207,27 @@ $ free x;
 
 
 ## Interaction rules
+Connections between agents are rewritten according to interaction rules:
+
 - Interaction rules are defined as the following syntax:  
-  &lt;agent&gt; ```><``` &lt;agent&gt; ```=>``` &lt;equations&gt; ```;```
+  ```
+<interaction rule> ::= <agent> `><` <agent> `=>` <equations> `;`
+```
 
-  where 
-    &lt;agent&gt; means an agent whose all arguments are names,
-    &lt;equations&gt; means a sequence of equations.
+- Example 1: Incrementor on unary natural numbers
+  ```
+$ Inc(r) >< Z => r~S(Z);
+$ Inc(r) >< S(x) => r~S(S(x));
+$ Inc(result) ~ S(S(Z));
+$ result;
+S(S(S(Z))
+$ free result;
+```
 
-
-- For instance, the following shows two rules of addition on unary 
-natural numbers:
+- Example 2: Addition on unary natural numbers:
   ```
 $ Add(x,r)><S(y) => Add(S(x),r)~y;
 $ Add(x,r)><Z => x~r;
-```
-The result of addition of S(Z) and S(S(Z)) is obtained using the 
-above rules as follows:
-  ```
 $ Add(S(Z), result)~S(S(Z));
 $ result;
 S(S(S(Z)))
@@ -265,7 +241,7 @@ $ free result;
 
 
 ## Integer numbers
-- As an extension of Inpla, agents can have integer numbers as 
+As an extension of Inpla, agents can have integer numbers as 
 arguments. These are called attributes. For instance, ```A(100)``` is 
 interpreted as an agent ```A``` that holds an attribute of the integer 
 number ```100```. 
@@ -281,22 +257,22 @@ $ free x;
 
 
 ## Built-in agents
-- Inpla has built-in agents:
-  - ```Tuple0```, ```Tuple1(x)```, ```Tuple2(x,y)```,...  
+Inpla has built-in agents:
+- ```Tuple0```, ```Tuple1(x)```, ```Tuple2(x,y)```,...  
   are written as  
   ```()```, ```(x)```, ```(x,y)```,...
 
-  - ```Nil```, ```Cons(x,xs)```  
+- ```Nil```, ```Cons(x,xs)```  
   are written as  
   ```[]``` and ```[x|xs]```, respectively. 
 
-  - A nested ```Cons``` that terminated at ```Nil``` is written as a list notation using brackets ```[``` and ```]```. 
-    - For instance,  
+- A nested ```Cons``` that terminated at ```Nil``` is written as a list notation using brackets ```[``` and ```]```. 
+  - For instance,  
     ```[x1 | [x2 | [ x3 | NIL]]]```  
     is written as  
     ```[x1,x2,x3]``` .  
 
-- The following is an example of built-in agents:
+The following is an example of built-in agents:
   ```
 $ x~(100);
 $ x;
@@ -308,7 +284,7 @@ $ x;
 $ free x;
 ```
 
-- Attritubes are not agents, and thus the following becomes an error:
+Attritubes are not agents, and thus the following becomes an error:
   ```
 $ x~100;
 ERROR: The integer 100 is used as an agent.
@@ -316,15 +292,12 @@ ERROR: The integer 100 is used as an agent.
 
 
 ## Arithmetic expressions on attributes
-- Attiributes can be given as the results of arithmetic operation 
+Attiributes can be given as the results of arithmetic operation 
 using ```where``` statement after equations:  
-  &lt;equations&gt; ```where``` &lt;let-clause&gt;
-  where 
-  &lt;let-clause&gt; is defined as:  
-    &lt;name&gt; ```='```  &lt;arithmetic-expression&gt;.
-
-- Besides of &lt;let-clause&gt;, a sequence with the space delimitor ``` ``` of 
-&lt;let-clause&gt; is also used.
+  ```
+<extended equations> ::= <equations> 
+                       | <equations> 'where' <let-clause>* ';'
+<let-clause> ::= <name> '=' <arithmetic expression>
 
 - For instance, the following is an expression using ```where```:
   ```
@@ -336,7 +309,7 @@ $ free x;
 
 
 ## Interaction rules with expressions on attributes
-- Attiributes can be managed by using a modifier ```int```. 
+Attiributes can be managed by using a modifier ```int```. 
 - The following is an example of an increment operation on an attribute:
   ```
 $ Inc(r) >< (int a) => r~(b) where b=a+1;
@@ -366,12 +339,13 @@ $ free r;
 ## Interaction rules with conditions on attributes
 - Conditional rewritings on attributes in interaction rules can be 
 performed. The following is a general form:  
-  &lt;agent&gt; ```><``` &lt;agent&gt;  
-  ```|``` &lt;condition&gt; ```=>``` &lt;equations&gt;  
-  ```|``` &lt;condition&gt; ```=>``` &lt;equations&gt; ```where``` &lt;let-clauses&gt;  
+  ```
+<rule with conditions> ::= <agent> '><' <agent>
+  '|' <condition> '=>' <extended equations>
+  '|' <condition> '=>' <extended equations>
   ...  
-  ```|``` ```_```  ```=>``` &lt;equations&gt; ```;```
-
+  '|' '_'  '=>' <extended equations> ';'
+```
 
 - For instance, the following shows rules to obtain a list that contains 
 only even numbers:
