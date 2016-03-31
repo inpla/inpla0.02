@@ -106,6 +106,11 @@ at random.
 > ./inpla -f sample/msort100.in
 ```
 
+  - Map operation.
+  ```
+> ./inpla -f mapfib_34_5.in
+```
+
 ### Interactive mode
 - Inpla starts in the interactive mode as follows when it is invoked 
 without the ```-f``` option:
