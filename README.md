@@ -325,10 +325,10 @@ $ free r;
 performed. The following is a general form:  
   ```
 <rule with conditions> ::= <agent> '><' <agent>
-  '|' <condition> '=>' <extended equations>
-  '|' <condition> '=>' <extended equations>
-  ...  
-  '|' '_'  '=>' <extended equations> ';'
+                          '|' <condition> '=>' <extended equations>
+                          '|' <condition> '=>' <extended equations>
+                              ...  
+                          '|' '_'  '=>' <extended equations> ';'
 ```
 
 - For instance, the following shows rules to obtain a list that contains 
