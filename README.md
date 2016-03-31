@@ -150,10 +150,10 @@ Options:
 multi-thread version by using the command ```make thread```.)
 
 
-# Introduction
+# Introduction (how to use?)
 
 ## Terms
-Terms are defined as follows:
+Terms are built by names and agents as follows:
   ```
 <term> ::= <name>
          | <agentID>
@@ -167,7 +167,7 @@ in interaction nets. For instance, ```A``` and ```Succ(x)``` are identified as a
 
 ## Connections
 Connections between terms are expresssed by equations. In inpla, we use the symbol ```~``` instead of ```=```.
-An equation can be evaluated in Inpla. For instance, ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
+Inpla evaluates an equation. For instance, ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
   ```
 $ x~A;
 ```
@@ -209,7 +209,7 @@ Connections between agents are rewritten according to interaction rules:
   ```
 $ Inc(r) >< Z => r~S(Z);
 $ Inc(r) >< S(x) => r~S(S(x));
-$ Inc(result) ~ S(S(Z));
+$ Inc(result)~S(S(Z));
 $ result;
 S(S(S(Z))
 $ free result;
@@ -217,8 +217,8 @@ $ free result;
 
 - Example 2: Addition on unary natural numbers:
   ```
-$ Add(x,r)><S(y) => Add(S(x),r)~y;
-$ Add(x,r)><Z => x~r;
+$ Add(x,r) >< Z => x~r;
+$ Add(x,r) >< S(y) => Add(S(x),r)~y;
 $ Add(S(Z), result)~S(S(Z));
 $ result;
 S(S(S(Z)))
@@ -311,7 +311,7 @@ $ free result;
 
 - Example 2: Addition operation on attributes:
   ```
-$ Add(n2,r) >< (int i) => Add2(i, r) ~ n2;
+$ Add(n2,r) >< (int i) => Add2(i, r)~n2;
 $ Add2(int i, r) >< (int j) => r~(a) where a=i+j;
 $ Add((10),r)~(3);
 $ r;
@@ -355,14 +355,14 @@ $ free r;
 Fib(r) >< (int a)
 | a == 0 => r~(0)
 | a == 1 => r~(1)
-| _ => Fib(n1)~(b),Fib(n2)~(c), Add(n2,r)~n1 
+| _ => Fib(n1)~(b), Fib(n2)~(c), Add(n2,r)~n1 
   where b=a-1 c=a-2; 
 
 Add(n2,r) >< (int i)
 => Add2(i, r) ~ n2;
 
 Add2(int i, r) >< (int j)
-=> r~(a) where a=i+j;
+=>r ~ (a) where a=i+j;
 // -----------------------------------------------------------
 ```
 
