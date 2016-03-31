@@ -190,7 +190,7 @@ $ x;
 <NON-DEFINED>
 ```
 
-Many equations can also be evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
+Many equations can also be evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed because it is connected to two terms.):
   ```
 $ x~A, x~y;
 $ y;
