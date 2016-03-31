@@ -418,6 +418,6 @@ Proceedings 8th International Workshop on Computing with Terms and Graphs, TERMG
 - [HINet: Interaction Nets in Haskell](http://www.cas.mcmaster.ca/~kahl/Haskell/HINet/)
 
 # Licence
-Copyright (c) 2016 Shinya SATO  
+Copyright (c) 2016 [Shinya SATO](http://satolab.com/)  
  Released under the MIT license  
  http://opensource.org/licenses/mit-license.php
