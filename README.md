@@ -281,7 +281,7 @@ $ x;
 $ free x;
 ```
 
-Attritubes are not agents, and thus the following becomes an error:
+Attritubes are not agents, and thus the following raises an error:
   ```
 $ x~100;
 ERROR: The integer 100 is used as an agent.
