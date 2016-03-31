@@ -228,6 +228,7 @@ $ free result;
 ```
 
 - Example 2: Addition on unary natural numbers:
+
   ```
 $ Add(x,r) >< Z => x~r;
 $ Add(x,r) >< S(y) => Add(S(x),r)~y;
