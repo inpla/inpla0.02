@@ -319,6 +319,7 @@ $ free result;
 ```
 
 - Example 2: Addition operation on attributes:
+
   ```
 $ Add(n2,r) >< (int i) => Add2(i, r)~n2;
 $ Add2(int i, r) >< (int j) => r~(a) where a=i+j;
