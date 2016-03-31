@@ -177,7 +177,7 @@ Inpla evaluates an equation. For instance, ```x~A``` is evaluated such that the 
 $ x~A;
 ```
 
-To show the connected elements to a name x, type just ```x```:  
+To show the connected terms from the name x, type just ```x```:  
   ```
 $ x;
 A
