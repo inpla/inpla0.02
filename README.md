@@ -235,10 +235,7 @@ $ free result;
 As an extension of Inpla, agents can have integer numbers as 
 arguments. These are called attributes. For instance, ```A(100)``` is 
 interpreted as an agent ```A``` that holds an attribute of the integer 
-number ```100```. 
-
-- For instance, the following shows that the agent ```A(100)``` is managed correctly in 
-this system:
+number ```100```:
   ```
 $ x~A(100);
 $ x;
