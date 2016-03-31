@@ -393,7 +393,7 @@ $ free r;
   - ```prnat``` &lt;name&gt;```;```    
   Put a term connected from the &lt;name&gt; as a natural number.
   - ```use``` ```"```filename```";```  
-  Read the filename from the current directory.
+  Read the filename in the current directory.
   - ```interface;```       
   Put all names that are not non-defined.
   - ```exit;```            
