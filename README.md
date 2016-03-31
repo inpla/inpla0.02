@@ -79,7 +79,7 @@ using ```-t 4```, Inpla uses 4 threads:
 > ./inpla -f sample/245II.in
 ```  
 
-  - Samples of linear systemT encoding (see [our paper](http://link.springer.com/chapter/10.1007%2F978-3-319-29604-3_6) presented at FLOPS 2016).
+  - Samples of linear systemT encoding (see [our paper](http://link.springer.com/chapter/10.1007%2F978-3-319-29604-3_6) presented at [FLOPS 2016](http://www.info.kochi-tech.ac.jp/FLOPS2016/)).
   ```
 > ./inpla -f sample/linear-systemT.in
 ```
