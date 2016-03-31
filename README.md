@@ -217,10 +217,9 @@ $ Inc(r) >< S(x) => r~S(S(x));
 $ Inc(result)~S(S(Z));
 $ result;
 S(S(S(Z))
-$ free result;
 ```
 
-To show the result as a natural number, use ```prnat``` command:
+  To show the result as a natural number, use ```prnat``` command:
   ```
 $ prnat result;
 3
