@@ -363,10 +363,10 @@ Fib(r) >< (int a)
   where b=a-1 c=a-2; 
 
 Add(n2,r) >< (int i)
-=> Add2(i, r) ~ n2;
+=> Add2(i, r)~n2;
 
 Add2(int i, r) >< (int j)
-=>r ~ (a) where a=i+j;
+=> r~(a) where a=i+j;
 // -----------------------------------------------------------
 ```
 
