@@ -387,11 +387,11 @@ $ free r;
 ## Commands
 - Inpla has the following commands:
   - ```free``` &lt;name&gt;```;```     
-  The &lt;name&gt; and agents connected from the &lt;name&gt; are disposed.
-  - &lt;name&gt;```;```
-  Put a connected agents from the &lt;name&gt;.
+  Terms connected from the &lt;name&gt; and itself are disposed.
+  - &lt;name&gt;```;```  
+  Put a term connected from the &lt;name&gt;.
   - ```prnat``` &lt;name&gt;```;```    
-  Put a connected agents from the &lt;name&gt; as a natural number.
+  Put a term connected from the &lt;name&gt; as a natural number.
   - ```use``` ```"```filename```";```  
   Read the filename from the current directory.
   - ```interface;```       
@@ -400,7 +400,7 @@ $ free r;
   Quit the system.
 
 - Inpla has the following macro:
-  - ```const``` &lt;agent&gt;```=```&lt;int literal&gt;```";```  
+  - ```const``` &lt;agent&gt;```=```&lt;int literal&gt;```;```  
   The &lt;agent&gt; is replaced with the &lt;int literal&gt;.
 
 # Publications
