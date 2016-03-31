@@ -163,7 +163,7 @@ Terms are built by names and agents as follows:
 interaction nets. For instance, ```x``` and ```y``` are identified as names. 
 
 - Agent: a string started with a capital letter is identified as an agent 
-in interaction nets. For instance, ```A``` and ```Succ(x)``` are identified as an agent. 
+in interaction nets. For instance, ```A``` and ```Succ(x)``` are identified as agents. 
 
 ## Connections
 Connections between terms are expresssed by equations. In inpla, we use the symbol ```~``` instead of ```=```.
