@@ -210,7 +210,7 @@ Connections between agents are rewritten according to interaction rules:
 <interaction rule> ::= <agent> `><` <agent> `=>` <equations> `;`
 ```
   where
-  - these ```<agent>``` must have only names as arguments, and the names must occur once in the ```<equations>```.
+  - these ```<agent>``` must have only names as arguments, and each of the names must occur once in the ```<equations>```.
 
 - Example 1: Incrementor on unary natural numbers
   ```
