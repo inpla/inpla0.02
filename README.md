@@ -215,6 +215,13 @@ S(S(S(Z))
 $ free result;
 ```
 
+To show the result as a natural number, use ```prnat``` command:
+  ```
+$ prnat result;
+3
+$ free result;
+```
+
 - Example 2: Addition on unary natural numbers:
   ```
 $ Add(x,r) >< Z => x~r;
@@ -222,9 +229,6 @@ $ Add(x,r) >< S(y) => Add(S(x),r)~y;
 $ Add(S(Z), result)~S(S(Z));
 $ result;
 S(S(S(Z)))
-```
-To show the result as a natural number, use ```prnat``` command:
-  ```
 $ prnat result;
 3
 $ free result;
