@@ -289,6 +289,7 @@ using ```where``` statement after equations:
 ```
 
 - For instance, the following is an expression using ```where```:
+
   ```
 $ x~(a) where b=3+5 a=b+10;
 $ x;
@@ -299,7 +300,7 @@ $ free x;
 
 ## Interaction rules with expressions on attributes
 Attiributes can be managed by using a modifier ```int```. 
-- The following is an example of an increment operation on an attribute:
+- Example 1: Incrementor on an attribute:
   ```
 $ Inc(r) >< (int a) => r~(b) where b=a+1;
 $ Inc(result)~(10);
@@ -308,16 +309,10 @@ $ result;
 $ free result;
 ```
 
-- The following is another examle of addition operation on attributes:
+- Example 2: Addition operation on attributes:
   ```
-// Addition operation on attributes --------------------------
-Add(n2,r) >< (int i)
-=> Add2(i, r) ~ n2;
-
-Add2(int i, r) >< (int j)
-=> r~(a) where a=i+j;
-// -----------------------------------------------------------
-
+$ Add(n2,r) >< (int i) => Add2(i, r) ~ n2;
+$ Add2(int i, r) >< (int j) => r~(a) where a=i+j;
 $ Add((10),r)~(3);
 $ r;
 (13)
@@ -345,7 +340,9 @@ EvenList(r) >< [int x| xs]
 | x%2==0 => r~[x | r1], EvenList(r1)~xs
 | _      => EvenList(r)~xs;
 // ---------------------------------------------------
+```
 
+  ```
 $ EvenList(r)~[1,3,7,5,3,4,9,10];
 $ r;
 [4,10]
@@ -367,7 +364,9 @@ Add(n2,r) >< (int i)
 Add2(int i, r) >< (int j)
 => r~(a) where a=i+j;
 // -----------------------------------------------------------
+```
 
+  ```
 $ Fib(r)~(39);
 $ r;
 (63245986)
@@ -399,7 +398,7 @@ $ free r;
 PhD Thesis, University of Sussex, September 2014. 
 
 - Abubakar Hassan, Ian Mackie and Shinya Sato,
-*An implementation model for interaction nets*,
+[*An implementation model for interaction nets*](http://arxiv.org/abs/1505.07164),
 Proceedings 8th International Workshop on Computing with Terms and Graphs, TERMGRAPH 2014, EPTCS 183, May 2015. 
 
 - Ian Mackie and Shinya Sato,
