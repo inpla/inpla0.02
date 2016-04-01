@@ -156,6 +156,7 @@ multi-thread version by using the command ```make thread```.)
 
 
 # Introduction (how to use?)
+Inpla evaluates nets built by equations, which are connections between terms. First, we learn about terms and equations.
 
 ## Terms
 Terms are built by names and agents as follows:
@@ -203,7 +204,7 @@ $ y;
 ```  
 
 ## Interaction rules
-Connections between agents are rewritten according to interaction rules:
+Inpla rewrite connections between agents, according to interaction rules:
 
 - Interaction rules are defined as the following syntax:  
   ```
