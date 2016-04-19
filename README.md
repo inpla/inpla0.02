@@ -415,8 +415,8 @@ PhD Thesis, University of Sussex, September 2014.
 Proceedings 8th International Workshop on Computing with Terms and Graphs, TERMGRAPH 2014, EPTCS 183, May 2015. 
 
 - Ian Mackie and Shinya Sato,
-*Parallel Evaluation of Interaction Nets: Case Studies and Experiments*,
-(accepted, to appear). 
+[*Parallel Evaluation of Interaction Nets: Case Studies and Experiments*](http://journal.ub.tu-berlin.de/eceasst/article/view/1034),
+Electronic Communications of the EASST, Volume 73: Graph Computation Models - Selected Revised Papers from GCM 2015, March 2016. 
 
 # Related works
 - [HINet: Interaction Nets in Haskell](http://www.cas.mcmaster.ca/~kahl/Haskell/HINet/)
