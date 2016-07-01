@@ -155,7 +155,7 @@ Options:
 multi-thread version by using the command ```make thread```.)
 
 
-# Introduction (how to use?)
+# Introduction (how to use)
 Inpla evaluates nets built by equations, which are connections between terms. First, we learn about terms and equations.
 
 ## Terms
