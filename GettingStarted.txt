@@ -199,7 +199,7 @@ The following are commands to obtain the benchmark tables:
 * Names
 -------------------------------------------------------------------
 - A string started with a small letter is regarded as a name in 
-interaction nets. For instance, 'x' and 'y' are identified as names. 
+Inpla. For instance, 'x' and 'y' are identified as names. 
 To show the connected elements to a name x, type just 'x':
 $ x;
 <NON-DEFINED>
@@ -210,24 +210,22 @@ Because the given name 'x' has not defined, '<NON-DEFINED>' returns.
 
 * Connections
 -------------------------------------------------------------------
-- An equation in the lightweight calculus of interaction nets is 
-written by using '~' operator. Thus, an equations x=y is written 
-as x~y. 
+- A connection is written by using '~' operator, like x~y. 
 
 
 
-* Operation of equations
+* Operation of connections
 -------------------------------------------------------------------
-- The syntax of a sequence of equations is defined as follows:
- <equation> ',' <equation> ',' ... ',' <equation>
+- The syntax of a sequence of connections is defined as follows:
+ <connection sequence> ::= <connection> ',' <connection> ',' ... ',' <connection>
 
-- The following example shows an operation of two equations x~y 
+- The following example shows an operation of two connections x~y 
 and y~z:
 $ x~y, y~z;
 
 
 
-After this execution, the y is disposed, a new equation x~z is made, 
+After this execution, the y is disposed, a new connection x~z is made, 
 and x is connected from z. This is confirmed as follows:
 $ y;
 <NON-DEFINED>
@@ -254,7 +252,7 @@ $ z;
 * Agents
 -------------------------------------------------------------------
 - A string started with a capital letter is identified as an agent 
-in interaction nets. For instance, 'Z' is identified as an agent. 
+in Inpla. For instance, 'Z' is identified as an agent. 
 The following is an example of operation of x~Z:
 $ x~Z;
 $ x;
@@ -274,10 +272,10 @@ $ free x;
 * Interaction rules
 -------------------------------------------------------------------
 - Interaction rules are defined as the following syntax:
-  <agent> '><' <agent> '=>' <equations> ';'
+  <agent> '><' <agent> '=>' <connection sequence> ';'
 where 
  <agent> means an agent whose all arguments are names,
- <equations> means a sequence of equations.
+ <connection sequence> is a sequence of connections.
 
 
 For instance, the following shows two rules of addition on unary 
@@ -394,10 +392,10 @@ $ free r;
 - Conditional rewritings on attributes in interaction rules can be 
 performed. The following is a general form:
   <agent> '><' <agent> 
-  '|' <condition> '=>' <equations>
-  '|' <condition> '=>' <equations> 'where' <let-clauses>
+  '|' <condition> '=>' <connection sequence>
+  '|' <condition> '=>' <connection sequence> 'where' <let-clauses>
   ...
-  '|' '_'  '=>' <equations> ';'
+  '|' '_'  '=>' <connection sequence> ';'
 
 
 The following is an example of rules to obtain a list that contains 
