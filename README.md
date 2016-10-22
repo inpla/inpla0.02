@@ -156,7 +156,7 @@ multi-thread version by using the command ```make thread```.)
 
 
 # Introduction (how to use)
-Inpla evaluates nets built by connections between terms. First, we learn about terms and connections.
+Inpla evaluates nets, which are built by connections between terms. First, we learn about terms and connections.
 
 ## Terms
 Terms are built by names and agents as follows:
