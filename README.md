@@ -172,7 +172,7 @@ Inpla. For instance, ```x``` and ```y``` are identified as names.
 in Inpla. For instance, ```A``` and ```Succ(x)``` are identified as agents. 
 
 ## Connections
-Connections between terms are expresssed by using the symbol ```~```, like ```x~A```.
+A connections between two terms is expresssed by using the symbol ```~```, like ```x~A```.
 Inpla evaluates connections. For instance, the ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
   ```
 $ x~A;
@@ -191,7 +191,7 @@ $ x;
 <NON-DEFINED>
 ```
 
-Many connections can also be evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
+Many connections are also evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
   ```
 $ x~A, x~y;
 $ y;
