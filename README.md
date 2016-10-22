@@ -156,7 +156,7 @@ multi-thread version by using the command ```make thread```.)
 
 
 # Introduction (how to use)
-Inpla evaluates nets built by equations, which are connections between terms. First, we learn about terms and equations.
+Inpla evaluates nets built by connections between terms. First, we learn about terms and connections.
 
 ## Terms
 Terms are built by names and agents as follows:
@@ -166,14 +166,14 @@ Terms are built by names and agents as follows:
          | <agentID> '(' <term> ',' ... ',' <term> ')'
 ```
 - Name: a string started with a small letter is regarded as a name in 
-interaction nets. For instance, ```x``` and ```y``` are identified as names. 
+Inpla. For instance, ```x``` and ```y``` are identified as names. 
 
 - Agent: a string started with a capital letter is identified as an agent 
-in interaction nets. For instance, ```A``` and ```Succ(x)``` are identified as agents. 
+in Inpla. For instance, ```A``` and ```Succ(x)``` are identified as agents. 
 
 ## Connections
-Connections between terms are expresssed by equations. In inpla, we use the symbol ```~``` instead of ```=```.
-Inpla evaluates an equation. For instance, ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
+Connections between terms are expresssed by using the symbol ```~```, like ```x~A```.
+Inpla evaluates connections. For instance, the ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
   ```
 $ x~A;
 ```
@@ -191,7 +191,7 @@ $ x;
 <NON-DEFINED>
 ```
 
-Many equations can also be evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
+Many connections can also be evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
   ```
 $ x~A, x~y;
 $ y;
@@ -204,14 +204,14 @@ $ y;
 ```  
 
 ## Interaction rules
-Inpla rewrite connections between agents, according to interaction rules:
+Inpla rewrites connections between agents, according to interaction rules:
 
 - Interaction rules are defined as the following syntax:  
   ```
-<interaction rule> ::= <agent> `><` <agent> `=>` <equations> `;`
+<interaction rule> ::= <agent> `><` <agent> `=>` <connections> `;`
 ```
   where
-  - these ```<agent>``` must have only names as arguments, and each of the names must occur once in the ```<equations>```.
+  - these ```<agent>``` must have only names as arguments, and each of the names must occur once in the ```<connections>```.
 
 - Example 1: Incrementor on unary natural numbers
   ```
@@ -293,10 +293,10 @@ ERROR: The integer 100 is used as an agent.
 
 ## Arithmetic expressions on attributes
 Attiributes can be given as the results of arithmetic operation 
-using ```where``` statement after equations:  
+using ```where``` statement after connections:  
   ```
-<extended equations> ::= <equations> 
-                       | <equations> 'where' <let-clause>* ';'
+<connections with expressions> ::= <connections> 
+                       | <connections> 'where' <let-clause>* ';'
 <let-clause> ::= <name> '=' <arithmetic expression>
 ```
 
@@ -338,10 +338,10 @@ $ free r;
 performed. The following is a general form:  
   ```
 <rule with conditions> ::= <agent> '><' <agent>
-                          '|' <condition> '=>' <extended equations>
-                          '|' <condition> '=>' <extended equations>
+                          '|' <condition> '=>' <connections with expressions>
+                          '|' <condition> '=>' <connections with expressions>
                               ...  
-                          '|' '_'  '=>' <extended equations> ';'
+                          '|' '_'  '=>' <connections with expressions> ';'
 ```
 
 - For instance, the following shows rules to obtain a list that contains 
