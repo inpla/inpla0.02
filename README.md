@@ -25,7 +25,8 @@ Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc
   - gcc (>= 4.0), flex, bison
 
 - Build  
-  - Single-thread version: Use ```make``` command to build Inpla as follows (the symbol ```>``` means a shell prompt):  ```
+  - Single-thread version: Use ```make``` command to build Inpla as follows (the symbol ```>``` means a shell prompt):
+```
 > make
 ```  
 
@@ -39,35 +40,35 @@ Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc
 - Inpla starts in the batch operation mode that manages a file when 
 an option ```-f``` is specified. For instance, the following command 
 makes Inpla read a file [```sample/fib_9.in```](sample/fib_9.in) and execute it:
-  ```
+```
 > ./inpla -f sample/fib_9.in
 ```
 
 - An option ```-t``` can specify the number of threads in the thread 
 pool, in the case of the multi-thread version. For instance,
 using ```-t 4```, Inpla uses 4 threads:
-  ```
+```
 > ./inpla -f sample/fib_9.in
 ```
 
 - There are other sample files in the [```sample```](sample) directory.
   - Ackerman function A 3 5 on unary natural numbers.
-  ```
+```
 > ./inpla -f sample/AckSZ-3_5.in
 ```
 
   - Ackerman function A 3 5 on integer numbers.
-  ```
+```
 > ./inpla -f sample/ack_3_5.in
 ```
 
   - Fibonacci number of 9 on unary natural numbers.
-  ```
+```
 > ./inpla -f sample/FibSZ_9.in
 ```
 
   - Fibonacci number of 9 on integer numbers.
-  ```
+```
 > ./inpla -f sample/fib_9.in
 ```
 
@@ -75,39 +76,39 @@ using ```-t 4```, Inpla uses 4 threads:
   - Evaluation of a lambda term ```245II``` in [YALE encoding](http://dl.acm.org/citation.cfm?id=289434), where
 ```2 4 5``` mean church numbers of lambda terms respectively and
 ```I``` is a lambda term $\lambda x.x$.
-  ```
+```
 > ./inpla -f sample/245II.in
 ```  
 
   - Samples of linear systemT encoding (see [our paper](http://link.springer.com/chapter/10.1007%2F978-3-319-29604-3_6) presented at [FLOPS 2016](http://www.info.kochi-tech.ac.jp/FLOPS2016/)).
-  ```
+```
 > ./inpla -f sample/linear-systemT.in
 ```
 
   - Bubble sort for a list that has 100 integer numbers as elements, 
 at the best case, the worst case and the case of elements selected 
 at random. 
-  ```
+```
 > ./inpla -f sample/bsort100.in
 ```
 
   - Insertion sort.
-  ```
+```
 > ./inpla -f sample/isort100.in
 ```
 
   - Quick sort.
-  ```
+```
 > ./inpla -f sample/qsort100.in
 ```
 
   - Merge sort.
-  ```
+```
 > ./inpla -f sample/msort100.in
 ```
 
   - Map operation.
-  ```
+```
 > ./inpla -f mapfib_34_5.in
 ```
 
@@ -115,7 +116,7 @@ at random.
 - Inpla starts in the interactive mode as follows when it is invoked 
 without the ```-f``` option:
 
-  ```
+```
 > ./inpla
 ------------------------------------------------------------
       Inpla: Interaction nets as a programming language
@@ -129,18 +130,18 @@ $
 - The multi-thread version has an option ```-t``` in order to specify 
 the number of threads in a thread pool. For instance, by using an 
 option ```-t 4``` Inpla starts with four threads in the pool:
-  ```
+```
 > ./inpla -t 4
 ```
 
 - To quit this system, use ```exit``` command:
-  ```
+```
 $ exit;
 ```
 
 ### Options
 - Other options can be shown with ```-h``` option:
-  ```
+```
 > ./inpla -h
 Usage: inpla [options]
 
@@ -160,7 +161,7 @@ Inpla evaluates nets, which are built by connections between terms. First, we le
 
 ## Terms
 Terms are built by names and agents as follows:
-  ```
+```
 <term> ::= <name>
          | <agentID>
          | <agentID> '(' <term> ',' ... ',' <term> ')'
@@ -174,25 +175,25 @@ in Inpla. For instance, ```A``` and ```Succ(x)``` are identified as agents.
 ## Connections
 A connections between two terms is expresssed by using the symbol ```~```, like ```x~A```.
 Inpla evaluates connections. For instance, the ```x~A``` is evaluated such that the ```A``` is connected from the ```x```:
-  ```
+```
 $ x~A;
 ```
 
 To show the connected terms from the name x, type just ```x```:  
-  ```
+```
 $ x;
 A
 ```  
 
 To dispose anything connceted from the ```x```, use ```free``` command:
-  ```
+```
 $ free x;
 $ x;
 <NON-DEFINED>
 ```
 
 Many connections are also evaluated. For instance, ```x~A, x~y``` is evaluated as ```y~A``` (note that the ```x``` is disposed):
-  ```
+```
 $ x~A, x~y;
 $ y;
 A
@@ -207,14 +208,14 @@ $ y;
 Inpla rewrites connections between agents, according to interaction rules:
 
 - Interaction rules are defined as the following syntax:  
-  ```
+```
 <interaction rule> ::= <agent> `><` <agent> `=>` <connections> `;`
 ```
   where
   - these ```<agent>``` must have only names as arguments, and each of the names must occur once in the ```<connections>```.
 
 - Example 1: Incrementor on unary natural numbers
-  ```
+```
 $ Inc(r) >< Z => r~S(Z);
 $ Inc(r) >< S(x) => r~S(S(x));
 $ Inc(result)~S(S(Z));
@@ -223,7 +224,7 @@ S(S(S(Z))
 ```
 
   To show the result as a natural number, use ```prnat``` command:
-  ```
+```
 $ prnat result;
 3
 $ free result;
@@ -231,7 +232,7 @@ $ free result;
 
 - Example 2: Addition on unary natural numbers:
 
-  ```
+```
 $ Add(x,r) >< Z => x~r;
 $ Add(x,r) >< S(y) => Add(S(x),r)~y;
 $ Add(S(Z), result)~S(S(Z));
@@ -248,7 +249,7 @@ As an extension of Inpla, agents can have integer numbers as
 arguments. These are called attributes. For instance, ```A(100)``` is 
 interpreted as an agent ```A``` that holds an attribute of the integer 
 number ```100```:
-  ```
+```
 $ x~A(100);
 $ x;
 A(100);
@@ -273,7 +274,7 @@ Inpla has built-in agents:
     ```[x1,x2,x3]``` .  
 
 The following is an example of built-in agents:
-  ```
+```
 $ x~(100);
 $ x;
 (100)
@@ -285,7 +286,7 @@ $ free x;
 ```
 
 Attritubes are not agents, and thus the following raises an error:
-  ```
+```
 $ x~100;
 ERROR: The integer 100 is used as an agent.
 ```
@@ -294,7 +295,7 @@ ERROR: The integer 100 is used as an agent.
 ## Arithmetic expressions on attributes
 Attiributes can be given as the results of arithmetic operation 
 using ```where``` statement after connections:  
-  ```
+```
 <connections with expressions> ::= <connections> 
                        | <connections> 'where' <let-clause>* ';'
 <let-clause> ::= <name> '=' <arithmetic expression>
@@ -302,7 +303,7 @@ using ```where``` statement after connections:
 
 - For instance, the following is an expression using ```where```:
 
-  ```
+```
 $ x~(a) where b=3+5 a=b+10;
 $ x;
 (18);
@@ -313,7 +314,7 @@ $ free x;
 ## Interaction rules with expressions on attributes
 Attiributes can be managed by using a modifier ```int```. 
 - Example 1: Incrementor on an attribute:
-  ```
+```
 $ Inc(r) >< (int a) => r~(b) where b=a+1;
 $ Inc(result)~(10);
 $ result;
@@ -323,7 +324,7 @@ $ free result;
 
 - Example 2: Addition operation on attributes:
 
-  ```
+```
 $ Add(n2,r) >< (int i) => Add2(i, r)~n2;
 $ Add2(int i, r) >< (int j) => r~(a) where a=i+j;
 $ Add((10),r)~(3);
@@ -336,7 +337,7 @@ $ free r;
 ## Interaction rules with conditions on attributes
 - Conditional rewritings on attributes in interaction rules can be 
 performed. The following is a general form:  
-  ```
+```
 <rule with conditions> ::= <agent> '><' <agent>
                           '|' <condition> '=>' <connections with expressions>
                           '|' <condition> '=>' <connections with expressions>
@@ -346,7 +347,7 @@ performed. The following is a general form:
 
 - For instance, the following shows rules to obtain a list that contains 
 only even numbers:
-  ```
+```
 // EvenList ------------------------------------------
 EvenList(r) >< [] => r~[];
 EvenList(r) >< [int x| xs]
@@ -355,7 +356,7 @@ EvenList(r) >< [int x| xs]
 // ---------------------------------------------------
 ```
 
-  ```
+```
 $ EvenList(r)~[1,3,7,5,3,4,9,10];
 $ r;
 [4,10]
@@ -363,7 +364,7 @@ $ free r;
 ```
 
 - As another example Fibonacci number is taken:
-  ```
+```
 // Fibonacci number ------------------------------------------
 Fib(r) >< (int a)
 | a == 0 => r~(0)
@@ -379,7 +380,7 @@ Add2(int i, r) >< (int j)
 // -----------------------------------------------------------
 ```
 
-  ```
+```
 $ Fib(r)~(39);
 $ r;
 (63245986)
