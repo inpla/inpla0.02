@@ -7,8 +7,8 @@ Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc
 - There are examples such that the multi-threaded Inpla runs faster than Standard ML and Python 2.7 on Core-i7 CPU and so on.
   - Execution time in second on interpreters (Linux PC, 2.4GHz, Core i7-3630QM, 16GB), where Inpla*n* means that it was executed by using *n* threads.
 
-        | SML | Python | Inpla | Inpla1 | Inpla2 | Inpla3 | Inpla4 | Inpla5
-------- | --- | ------ | ----- |  ----- | ------ | ------ | ------ | ------
+|        | SML | Python | Inpla | Inpla1 | Inpla2 | Inpla3 | Inpla4 | Inpla5|
+|------- | --- | ------ | ----- |  ----- | ------ | ------ | ------ | ------|
 fib 34|0.12|2.09|1.67|1.50|0.80|0.70|0.68|0.82
 fib 38|0.66|16.32|11.39|10.22|5.68|4.47|4.40|4.75
 ack 3 6|0.03|0.05|0.02|0.03|0.02|0.02|0.02|0.02
