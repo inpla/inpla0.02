@@ -26,7 +26,7 @@ Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc
 
 - Build  
   - Single-thread version: Use ```make``` command to build Inpla as follows (the symbol ```>``` means a shell prompt):  
-```
+  ```
 > make
 ```  
 
