@@ -18,7 +18,7 @@ Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc
 |MAPFib 34 5|0.49|9.89|8.92|8.09|4.55|3.21|2.54|2.73|
 |MAPFib 34 10|0.94|19.77|17.81|17.23|9.28|6.44|5.22|5.38|
 
-  ![speedup-ratio](http://satolab.com/public/inpla-benchmark.png)
+  ![speedup-ratio](paralle-execution.png)
 
 ## Getting started
 - Requirement  
