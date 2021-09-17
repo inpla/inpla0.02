@@ -3,6 +3,9 @@
 ## What is Inpla
 Inpla is a multi-threaded parallel interpreter of interaction nets, by using gcc and the Posix-thread library.
 
+***This is an old version</mark>, so plase use [the current veresion](https://github.com/inpla/inpla).***
+
+
 ### Feature of Version 0.02
 This version 0.02 (last update 30 March 2016) has the following features:
 - It is the fastest interpreter of interaction nets so far.
